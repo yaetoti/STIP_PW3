@@ -7,6 +7,8 @@ class ByteStream final {
 public:
 	ByteStream() = default;
 	explicit ByteStream(size_t capacity);
+	explicit ByteStream(const std::vector<uint8_t>& data);
+	explicit ByteStream(std::vector<uint8_t>&& data);
 
 	template <typename T, typename = std::enable_if_t<std::is_trivially_copyable_v<T>>>
 	ByteStream& operator<<(const std::basic_string<T, std::char_traits<T>, std::allocator<T>>& data) {

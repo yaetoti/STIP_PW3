@@ -14,7 +14,11 @@ struct GatheredInfo {
 	int screenWidth;
 
 	explicit GatheredInfo(const std::wstring& path);
+	explicit GatheredInfo(const std::vector<uint8_t>& data);
+	explicit GatheredInfo(std::vector<uint8_t>&& data);
 
 	std::vector<uint8_t> Serialize() const;
+	void Deserialize(const std::vector<uint8_t>& data);
+	void Deserialize(std::vector<uint8_t>&& data);
 	std::wstring ToString() const;
 };

@@ -48,9 +48,17 @@ GatheredInfo::GatheredInfo(const std::wstring& path) {
 	this->volumeLabel.erase(std::find(this->volumeLabel.begin(), this->volumeLabel.end(), '\0'), this->volumeLabel.end());
 }
 
+GatheredInfo::GatheredInfo(const std::vector<uint8_t>& data) {
+	Deserialize(data);
+}
+
+GatheredInfo::GatheredInfo(std::vector<uint8_t>&& data) {
+	Deserialize(std::move(data));
+}
+
 std::vector<uint8_t> GatheredInfo::Serialize() const {
-	ByteStream data;
-	data << username
+	ByteStream stream;
+	stream << username
 		<< computerName
 		<< windowsDirectory
 		<< systemDirectory
@@ -58,7 +66,31 @@ std::vector<uint8_t> GatheredInfo::Serialize() const {
 		<< memoryCapacity
 		<< mouseButtonsCount
 		<< screenWidth;
-	return data.release();
+	return stream.release();
+}
+
+void GatheredInfo::Deserialize(const std::vector<uint8_t>& data) {
+	ByteStream stream(data);
+	stream >> username
+		>> computerName
+		>> windowsDirectory
+		>> systemDirectory
+		>> volumeLabel
+		>> memoryCapacity
+		>> mouseButtonsCount
+		>> screenWidth;
+}
+
+void GatheredInfo::Deserialize(std::vector<uint8_t>&& data) {
+	ByteStream stream(std::move(data));
+	stream >> username
+		>> computerName
+		>> windowsDirectory
+		>> systemDirectory
+		>> volumeLabel
+		>> memoryCapacity
+		>> mouseButtonsCount
+		>> screenWidth;
 }
 
 std::wstring GatheredInfo::ToString() const {
