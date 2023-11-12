@@ -1,6 +1,6 @@
 #include "Registry.h"
 #include "ScopedHandle.h"
-#include "ConsoleLib/Console.h"
+#include "Console.h"
 
 LSTATUS RegWriteBinaryData(HKEY rootKey, const std::wstring& keyPath, const std::wstring& valueName, const std::vector<uint8_t>& data) {
     ScopedHandle<HKEY> hKey(nullptr, RegCloseKey);

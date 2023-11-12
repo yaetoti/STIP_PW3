@@ -21,32 +21,32 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{2012f778-ba50-4da6-a7eb-fa6e8508b2b5}</ProjectGuid>
-    <RootNamespace>Application</RootNamespace>
+    <ProjectGuid>{60ba5df5-7773-448d-a622-ddf8cd95b029}</ProjectGuid>
+    <RootNamespace>Utils</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v143</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v143</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v143</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v143</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
@@ -71,16 +71,16 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>C:\Users\yaetoti\Desktop\ПЗЗИ\Projects\PR3\ConsoleLib;C:\Users\yaetoti\Desktop\ПЗЗИ\Projects\PR3;$(IncludePath)</IncludePath>
+    <IncludePath>C:\Users\yaetoti\Desktop\ПЗЗИ\Projects\PR3\ConsoleLib;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <IncludePath>C:\Users\yaetoti\Desktop\ПЗЗИ\Projects\PR3\ConsoleLib;C:\Users\yaetoti\Desktop\ПЗЗИ\Projects\PR3;$(IncludePath)</IncludePath>
+    <IncludePath>C:\Users\yaetoti\Desktop\ПЗЗИ\Projects\PR3\ConsoleLib;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>C:\Users\yaetoti\Desktop\ПЗЗИ\Projects\PR3\ConsoleLib;C:\Users\yaetoti\Desktop\ПЗЗИ\Projects\PR3;$(IncludePath)</IncludePath>
+    <IncludePath>C:\Users\yaetoti\Desktop\ПЗЗИ\Projects\PR3\ConsoleLib;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <IncludePath>C:\Users\yaetoti\Desktop\ПЗЗИ\Projects\PR3\ConsoleLib;C:\Users\yaetoti\Desktop\ПЗЗИ\Projects\PR3;$(IncludePath)</IncludePath>
+    <IncludePath>C:\Users\yaetoti\Desktop\ПЗЗИ\Projects\PR3\ConsoleLib;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -92,8 +92,10 @@
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
+    <Lib>
+      <AdditionalDependencies>User32.lib;Advapi32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -109,8 +111,10 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
+    <Lib>
+      <AdditionalDependencies>User32.lib;Advapi32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
@@ -122,8 +126,10 @@
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
+    <Lib>
+      <AdditionalDependencies>User32.lib;Advapi32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
@@ -139,36 +145,29 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
+    <Lib>
+      <AdditionalDependencies>User32.lib;Advapi32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="AdminPanel.cpp" />
-    <ClCompile Include="Constants.cpp" />
-    <ClCompile Include="Database.cpp" />
-    <ClCompile Include="LoginForm.cpp" />
-    <ClCompile Include="Main.cpp" />
-    <ClCompile Include="User.cpp" />
-    <ClCompile Include="UserPanel.cpp" />
+    <ClCompile Include="ByteStream.cpp" />
+    <ClCompile Include="GatheredInfo.cpp" />
+    <ClCompile Include="Registry.cpp" />
+    <ClCompile Include="ScopeGuard.cpp" />
+    <ClCompile Include="Signature.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="AdminPanel.h" />
-    <ClInclude Include="Constants.h" />
-    <ClInclude Include="Database.h" />
-    <ClInclude Include="LoginForm.h" />
-    <ClInclude Include="resource.h" />
-    <ClInclude Include="User.h" />
-    <ClInclude Include="UserPanel.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <ResourceCompile Include="PR2.rc" />
+    <ClInclude Include="ByteStream.h" />
+    <ClInclude Include="GatheredInfo.h" />
+    <ClInclude Include="Registry.h" />
+    <ClInclude Include="ScopedHandle.h" />
+    <ClInclude Include="ScopeGuard.h" />
+    <ClInclude Include="Signature.h" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ConsoleLib\ConsoleLib.vcxproj">
       <Project>{025a1406-606d-4a21-9700-53cf7f4641bf}</Project>
-    </ProjectReference>
-    <ProjectReference Include="..\Utils\Utils.vcxproj">
-      <Project>{60ba5df5-7773-448d-a622-ddf8cd95b029}</Project>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

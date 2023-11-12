@@ -5,7 +5,7 @@
 #include <vector>
 #include <fstream>
 
-#include "ConsoleLib/Console.h"
+#include "Console.h"
 #include "GatheredInfo.h"
 #include "Registry.h"
 #include "Signature.h"

@@ -2,7 +2,7 @@
 #include <wincrypt.h>
 #include "Signature.h"
 #include "ScopedHandle.h"
-#include "ConsoleLib/Console.h"
+#include "Console.h"
 
 std::unique_ptr<Signature> CreateDigitalSignature(const std::vector<uint8_t>& data) {
     ScopedHandle<HCRYPTPROV> hProv(NULL, [](HCRYPTPROV value) { CryptReleaseContext(value, 0); });
