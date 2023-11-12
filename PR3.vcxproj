@@ -157,6 +157,15 @@
       <Project>{60ba5df5-7773-448d-a622-ddf8cd95b029}</Project>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="resource.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="PR3.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="x64\Release\Application.exe" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
