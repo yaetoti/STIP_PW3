@@ -10,10 +10,9 @@
 #include "Registry.h"
 #include "Signature.h"
 
+// TODO: STIP_PW2: Add field registry key name. Implement key validation
 // TODO: Installation
 // TODO: Dialog forms
-// TODO: Add STIP_PW2 project as submodule. Rewrite ConsoleLib dependencies for it
-// TODO: STIP_PW2: Add field registry key name. Implement key validation
 
 int WINAPI wWinMain(HINSTANCE, HINSTANCE, LPWSTR, int) {
 	auto info = std::make_unique<GatheredInfo>(L"C:\\MyProg");
