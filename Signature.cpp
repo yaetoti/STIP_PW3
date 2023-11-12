@@ -6,8 +6,8 @@
 
 std::unique_ptr<Signature> CreateDigitalSignature(const std::vector<uint8_t>& data) {
     ScopedHandle<HCRYPTPROV> hProv(NULL, [](HCRYPTPROV value) { CryptReleaseContext(value, 0); });
-    ScopedHandle<HCRYPTPROV> hKey(NULL, [](HCRYPTPROV value) { CryptDestroyKey(value); });
-    ScopedHandle<HCRYPTPROV> hHash(NULL, [](HCRYPTPROV value) { CryptDestroyHash(value); });
+    ScopedHandle<HCRYPTKEY> hKey(NULL, CryptDestroyKey);
+    ScopedHandle<HCRYPTHASH> hHash(NULL, CryptDestroyHash);
     auto result = std::make_unique<Signature>();
 
     if (!CryptAcquireContextW(hProv.Address(), nullptr, MS_ENHANCED_PROV, PROV_RSA_FULL, 0)
@@ -58,4 +58,44 @@ std::unique_ptr<Signature> CreateDigitalSignature(const std::vector<uint8_t>& da
     }
 
     return result;
+}
+
+int VerifyDigitalSignature(const std::vector<uint8_t>& data, const std::vector<uint8_t>& signature, const std::vector<uint8_t>& key) {
+    ScopedHandle<HCRYPTPROV> hProv(NULL, [](HCRYPTPROV value) { CryptReleaseContext(value, 0); });
+    ScopedHandle<HCRYPTKEY> hKey(NULL, CryptDestroyKey);
+    ScopedHandle<HCRYPTHASH> hHash(NULL, CryptDestroyHash);
+    auto result = std::make_unique<Signature>();
+
+    if (!CryptAcquireContextW(hProv.Address(), nullptr, MS_ENHANCED_PROV, PROV_RSA_FULL, 0)
+        && !CryptAcquireContextW(hProv.Address(), nullptr, MS_ENHANCED_PROV, PROV_RSA_FULL, CRYPT_NEWKEYSET)) {
+        Console::GetInstance()->WPrintF(L"Failed to acquire key container context. Error code: 0x%x\n", GetLastError());
+        return -1;
+    }
+    // Import public key
+    if (!CryptImportKey(hProv.Get(), key.data(), (DWORD)key.size(), 0, 0, hKey.Address())) {
+        Console::GetInstance()->WPrintF(L"Failed to import public key. Error code: 0x%x\n", GetLastError());
+        return -1;
+    }
+    // Hash data
+    if (!CryptCreateHash(hProv.Get(), CALG_SHA1, 0, 0, hHash.Address())) {
+        Console::GetInstance()->WPrintF(L"Failed to create hash object. Error code: 0x%x\n", GetLastError());
+        return -1;
+    }
+
+    if (!CryptHashData(hHash.Get(), data.data(), (DWORD)data.size(), 0)) {
+        Console::GetInstance()->WPrintF(L"Failed to hash data. Error code: 0x%x\n", GetLastError());
+        return -1;
+    }
+    // Verify signature
+    if (!CryptVerifySignatureW(hHash.Get(), signature.data(), (DWORD)signature.size(), hKey.Get(), nullptr, 0)) {
+        DWORD status = GetLastError();
+        if (status != NTE_BAD_SIGNATURE) {
+            Console::GetInstance()->WPrintF(L"Failed verify signature. Error code: 0x%x\n", status);
+            return -1;
+        }
+
+        return FALSE;
+    }
+
+    return TRUE;
 }

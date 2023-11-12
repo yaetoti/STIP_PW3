@@ -2,7 +2,7 @@
 
 #include <functional>
 
-class ScopeGuard {
+class ScopeGuard final {
 public:
     explicit ScopeGuard(std::function<void()>&& onExit) noexcept;
     explicit ScopeGuard(const ScopeGuard& other) = delete;

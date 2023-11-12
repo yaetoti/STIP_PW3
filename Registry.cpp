@@ -3,7 +3,7 @@
 #include "ConsoleLib/Console.h"
 
 LSTATUS RegWriteBinaryData(HKEY rootKey, const std::wstring& keyPath, const std::wstring& valueName, const std::vector<uint8_t>& data) {
-    ScopedHandle<HKEY> hKey(nullptr, [](HKEY value) { RegCloseKey(value); });
+    ScopedHandle<HKEY> hKey(nullptr, RegCloseKey);
     LSTATUS status = NULL;
     if ((status = RegCreateKeyExW(rootKey, keyPath.c_str(), 0, nullptr, 0, KEY_SET_VALUE, nullptr, hKey.Address(), nullptr)) != ERROR_SUCCESS) {
         Console::GetInstance()->WPrintF(L"Failed to open/create the registry key. Error code: ", status);
@@ -19,7 +19,7 @@ LSTATUS RegWriteBinaryData(HKEY rootKey, const std::wstring& keyPath, const std:
 }
 
 LSTATUS RegReadBinaryData(HKEY rootKey, const std::wstring& keyPath, const std::wstring& valueName, std::vector<uint8_t>& data) {
-    ScopedHandle<HKEY> hKey(nullptr, [](HKEY value) { RegCloseKey(value); });
+    ScopedHandle<HKEY> hKey(nullptr, RegCloseKey);
     LSTATUS status = NULL;
     if ((status = RegOpenKeyExW(rootKey, keyPath.c_str(), 0, KEY_QUERY_VALUE, hKey.Address())) != ERROR_SUCCESS) {
         Console::GetInstance()->WPrintF(L"Failed to open the registry key for reading. Error code: %d.\n", status);

@@ -9,3 +9,4 @@ struct Signature {
 };
 
 std::unique_ptr<Signature> CreateDigitalSignature(const std::vector<uint8_t>& data);
+int VerifyDigitalSignature(const std::vector<uint8_t>& data, const std::vector<uint8_t>& signature, const std::vector<uint8_t>& key);

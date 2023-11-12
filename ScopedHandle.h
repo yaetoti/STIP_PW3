@@ -4,10 +4,12 @@
 #include <functional>
 
 template <typename T, typename = std::enable_if_t<std::is_trivially_copyable_v<T>>>
-class ScopedHandle {
+class ScopedHandle final {
 public:
     ScopedHandle(T defaultValue, std::function<void(T)>&& onExit) noexcept
         : _value(defaultValue), _defaultValue(defaultValue), _onExit(std::move(onExit)) {}
+    ScopedHandle(T value, T defaultValue, std::function<void(T)>&& onExit) noexcept
+        : _value(value), _defaultValue(defaultValue), _onExit(std::move(onExit)) {}
     ScopedHandle(const ScopedHandle&) = delete;
     ~ScopedHandle() {
         Release();
