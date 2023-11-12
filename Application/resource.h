@@ -17,7 +17,10 @@
 #define IDC_EDIT3                       1003
 #define IDC_HANDSHAKE                   1004
 #define IDC_EDIT_REPEAT                 1005
+#define ID_TEXT_REGISTRY                1005
 #define IDC_USER_USERNAME               1006
+#define IDC_EDIT_REGISTRY               1006
+#define ID_EDIT_REGISTRY                1006
 #define ID_USER_CHANGEPASS              1007
 #define IDC_PASSWORD                    1009
 #define IDC_NEWPASSWORD                 1010

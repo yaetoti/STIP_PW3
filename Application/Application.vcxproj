@@ -71,16 +71,16 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>C:\Users\yaetoti\Desktop\ПЗЗИ\Projects\PR3\ConsoleLib;C:\Users\yaetoti\Desktop\ПЗЗИ\Projects\PR3;$(IncludePath)</IncludePath>
+    <IncludePath>C:\Users\yaetoti\Desktop\ПЗЗИ\Projects\PR3\ConsoleLib;C:\Users\yaetoti\Desktop\ПЗЗИ\Projects\PR3\Utils;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <IncludePath>C:\Users\yaetoti\Desktop\ПЗЗИ\Projects\PR3\ConsoleLib;C:\Users\yaetoti\Desktop\ПЗЗИ\Projects\PR3;$(IncludePath)</IncludePath>
+    <IncludePath>C:\Users\yaetoti\Desktop\ПЗЗИ\Projects\PR3\ConsoleLib;C:\Users\yaetoti\Desktop\ПЗЗИ\Projects\PR3\Utils;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>C:\Users\yaetoti\Desktop\ПЗЗИ\Projects\PR3\ConsoleLib;C:\Users\yaetoti\Desktop\ПЗЗИ\Projects\PR3;$(IncludePath)</IncludePath>
+    <IncludePath>C:\Users\yaetoti\Desktop\ПЗЗИ\Projects\PR3\ConsoleLib;C:\Users\yaetoti\Desktop\ПЗЗИ\Projects\PR3\Utils;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <IncludePath>C:\Users\yaetoti\Desktop\ПЗЗИ\Projects\PR3\ConsoleLib;C:\Users\yaetoti\Desktop\ПЗЗИ\Projects\PR3;$(IncludePath)</IncludePath>
+    <IncludePath>C:\Users\yaetoti\Desktop\ПЗЗИ\Projects\PR3\ConsoleLib;C:\Users\yaetoti\Desktop\ПЗЗИ\Projects\PR3\Utils;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
