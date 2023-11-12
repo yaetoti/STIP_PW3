@@ -146,6 +146,9 @@
     <ClCompile Include="ByteStream.cpp" />
     <ClCompile Include="GatheredInfo.cpp" />
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="Registry.cpp" />
+    <ClCompile Include="ScopeGuard.cpp" />
+    <ClCompile Include="Signature.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="ConsoleLib\ConsoleLib.vcxproj">
@@ -155,6 +158,10 @@
   <ItemGroup>
     <ClInclude Include="ByteStream.h" />
     <ClInclude Include="GatheredInfo.h" />
+    <ClInclude Include="Registry.h" />
+    <ClInclude Include="ScopedHandle.h" />
+    <ClInclude Include="ScopeGuard.h" />
+    <ClInclude Include="Signature.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

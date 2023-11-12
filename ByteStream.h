@@ -48,7 +48,7 @@ public:
 	}
 
 	const std::vector<uint8_t>& buf() const;
-	std::vector<uint8_t>&& release();
+	std::vector<uint8_t> release();
 	void seek(size_t readPos);
 
 private:

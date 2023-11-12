@@ -13,7 +13,7 @@ const std::vector<uint8_t>& ByteStream::buf() const {
 	return _buf;
 }
 
-std::vector<uint8_t>&& ByteStream::release() {
+std::vector<uint8_t> ByteStream::release() {
 	return std::move(_buf);
 }
 
