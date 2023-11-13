@@ -163,9 +163,6 @@
   <ItemGroup>
     <ResourceCompile Include="PR3.rc" />
   </ItemGroup>
-  <ItemGroup>
-    <None Include="x64\Release\Application.exe" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
